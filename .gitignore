@@ -1,4 +1,7 @@
+build/*
 *.o
 *.out
-*.swp~
+*.swp
+*.dat
+a.out
 r

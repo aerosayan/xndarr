@@ -13,5 +13,11 @@ using namespace std;
 
 int main()
 {
+  double x = 5.0;
+  double y = 10.0;
+
+  auto exp = xn::vecexpr<double,xn::op_div<double>,double>(x,y);
+  cout << exp.eval() << endl;
+
   return 0;
 }
