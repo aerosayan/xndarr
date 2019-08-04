@@ -21,16 +21,10 @@ class vecexpr
   /// Right hand side of the expression
   const RHS& rhs;
 
-  /// Functor to binary operation to execute
-  // NOTE : The operations are functors thus,their member functions i.e
-  // the operations can be called directly and data member op is just
-  // used as a basic functor.
-  const OP& op;
-
   public:
   /// Constructor
   vecexpr(const LHS& ,const RHS&);
-  LHS eval() {return op.eval(lhs,rhs);}
+  auto eval() {return OP::eval(lhs,rhs);}
 
 
 
