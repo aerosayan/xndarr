@@ -7,8 +7,8 @@
 
 template<typename LHS,typename OP, typename RHS>
 xn::vecexpr<LHS,OP,RHS>
-  ::vecexpr(const LHS& lhs_,const RHS& rhs_ )
-  : lhs(lhs_), rhs(rhs_)
+  ::vecexpr(const LHS& lhs,const RHS& rhs )
+  : lhs_(lhs), rhs_(rhs)
 {
 
 }

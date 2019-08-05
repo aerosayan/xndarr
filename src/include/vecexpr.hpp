@@ -16,15 +16,15 @@ template<typename LHS, typename OP, typename RHS>
 class vecexpr
 {
   /// Left hand side of the expression
-  const LHS& lhs;
+  const LHS& lhs_;
 
   /// Right hand side of the expression
-  const RHS& rhs;
+  const RHS& rhs_;
 
   public:
   /// Constructor
   vecexpr(const LHS& ,const RHS&);
-  auto eval() {return OP::eval(lhs,rhs);}
+  auto eval() {return OP::eval(lhs_,rhs_);}
 
 
 
