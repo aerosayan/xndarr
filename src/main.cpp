@@ -13,11 +13,13 @@ using namespace std;
 
 int main()
 {
-  double x = 5.0;
-  double y = 10.0;
+  xn::ndarray<int> a({1,2,3,4,5});
+  xn::ndarray<int> b({1,2,3,4,5});
+  xn::ndarray<int> c({1,2,3,4,5});
 
-  auto exp = xn::vecexpr<double,xn::op_div<double>,double>(x,y);
-  cout << exp.eval() << endl;
+  auto x = xn::vecexpr<decltype(a),xn::op_add<int>,decltype(b)>(a,b);
+  auto y = xn::vecexpr<decltype(a),xn::op_add<int>,decltype(c)>(a,c);
+  auto z = x + y;
 
   return 0;
 }
