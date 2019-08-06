@@ -27,14 +27,7 @@ class vecexpr
   vecexpr(const LHS& ,const RHS&);
   auto eval() {return OP::eval(lhs_,rhs_);}
 
-  template<typename RE>
-  auto operator+(RE&& other) const -> decltype(auto)
-  {
-    return vecexpr< vecexpr<LHS,OP,RHS>,OP,decltype(std::forward<RE>(other))>
-      (*this, std::forward<RE>(other));
-  }
-
-};
+  };
 };
 
 #include "vecexpr.cpp"
