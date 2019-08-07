@@ -5,9 +5,9 @@
 // @date 4-AUG-2019
 //-//////////////////////////////////////////////////////////////////////////-//
 
-template<typename LHS,typename OP, typename RHS>
-xn::vecexpr<LHS,OP,RHS>
-  ::vecexpr(const LHS& lhs,const RHS& rhs )
+XNDARR_EXPRESSION_LTSIG
+xn::XNDARR_EXPRESSION_STSIG
+  ::expression(const LHS& lhs,const RHS& rhs )
   : lhs_(lhs), rhs_(rhs)
 {
 

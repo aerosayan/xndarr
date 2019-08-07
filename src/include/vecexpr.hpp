@@ -13,8 +13,16 @@
 
 namespace xn{
 
-template<typename LHS, typename OP, typename RHS>
-class vecexpr
+/// Long template signature for class expression
+#define XNDARR_EXPRESSION_LTSIG \
+  template<typename LHS, typename OP, typename RHS>
+
+/// Short template signature for class expression
+#define XNDARR_EXPRESSION_STSIG \
+  expression<LHS,OP,RHS>
+
+XNDARR_EXPRESSION_LTSIG
+class expression
 {
   /// Left hand side of the expression
   const LHS& lhs_;
@@ -24,8 +32,7 @@ class vecexpr
 
   public:
   /// Constructor
-  vecexpr(const LHS& ,const RHS&);
-  auto eval() {return OP::eval(lhs_,rhs_);}
+  expression(const LHS& ,const RHS&);
 
   };
 };
