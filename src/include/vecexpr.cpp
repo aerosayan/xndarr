@@ -6,9 +6,10 @@
 //-//////////////////////////////////////////////////////////////////////////-//
 
 XNDARR_EXPRESSION_LTSIG
-xn::XNDARR_EXPRESSION_STSIG
-  ::expression(const LHS& lhs,const RHS& rhs )
-  : lhs_(lhs), rhs_(rhs)
+XNDARR_EXPRESSION_STSIG
+  ::expression(LHS&& lhs,RHS&& rhs )
+  : lhs_(std::forward<LHS>(lhs)),
+    rhs_(std::forward<RHS>(rhs))
 {
 
 }

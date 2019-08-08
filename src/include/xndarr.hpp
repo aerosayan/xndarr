@@ -7,3 +7,4 @@
 
 #include "vecexpr.hpp"
 #include "ndarray.hpp"
+#include "static_vector.hpp"

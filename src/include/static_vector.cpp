@@ -1,0 +1,13 @@
+//-//////////////////////////////////////////////////////////////////////////-//
+// @file static_vector.cpp
+// @info Static vector that allows compile time optimizations
+// @author Sayan Bhattacharjee
+// @date 8-AUG-2019
+//-//////////////////////////////////////////////////////////////////////////-//
+XNDARR_STATIC_VECTOR_LTSIG
+const szt
+XNDARR_STATIC_VECTOR_STSIG
+  :: size()
+{
+  return size_;
+}

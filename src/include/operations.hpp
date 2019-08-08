@@ -17,18 +17,18 @@ namespace xn {
 //-//////////////////////////////////////////////////////////////////////////-//
 
 /// Addition operation functor
-template<typename T>
 struct op_add
 {
+  template<typename T>
   T static eval(const T& lhs, const T& rhs){
     return lhs + rhs;
   }
 };
 
 /// Subtaraction operation functor
-template<typename T>
 struct op_sub
 {
+  template<typename T>
   T static eval(const T& lhs, const T& rhs){
     return lhs - rhs;
   }
@@ -36,9 +36,9 @@ struct op_sub
 
 
 /// Division operation functor
-template<typename T>
 struct op_div
 {
+  template<typename T>
   T static eval(const T& lhs, const T& rhs){
     return lhs / rhs;
   }
@@ -46,18 +46,18 @@ struct op_div
 
 
 /// Multiplication operation functor
-template<typename T>
 struct op_mul
 {
+  template<typename T>
   T static eval(const T& lhs, const T& rhs){
     return lhs * rhs;
   }
 };
 
 /// Modulus operation functor
-template<typename T>
 struct op_mod
 {
+  template<typename T>
   T static eval(const T& lhs, const T& rhs){
     return lhs % rhs;
   }
