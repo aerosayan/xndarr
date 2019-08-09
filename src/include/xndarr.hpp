@@ -5,6 +5,7 @@
 // @date 2-AUG-2019
 //-//////////////////////////////////////////////////////////////////////////-//
 
+#include "scalar.hpp"
 #include "vecexpr.hpp"
 #include "ndarray.hpp"
 #include "static_vector.hpp"

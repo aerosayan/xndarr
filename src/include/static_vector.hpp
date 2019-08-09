@@ -50,6 +50,50 @@ class static_vector{
   /// Get size
   static const szt size();
 
+
+  //-///////////////////////////////////////////////////////////////////////-//
+  /// Overloading opeartors
+  //-///////////////////////////////////////////////////////////////////////-//
+  template<typename RHSXP>
+  decltype(auto) operator+(RHSXP&& rhs)
+  {
+    return expression<
+      XNDARR_STATIC_VECTOR_STSIG const &,
+      op_add,
+      decltype(std::forward<RHSXP>(rhs))>
+      (*this, std::forward<RHSXP>(rhs));
+  }
+
+  template<typename RHSXP>
+  decltype(auto) operator-(RHSXP&& rhs)
+  {
+    return expression<
+      XNDARR_STATIC_VECTOR_STSIG const &,
+      op_sub,
+      decltype(std::forward<RHSXP>(rhs))>
+      (*this, std::forward<RHSXP>(rhs));
+  }
+
+  template<typename RHSXP>
+  decltype(auto) operator*(RHSXP&& rhs)
+  {
+    return expression<
+      XNDARR_STATIC_VECTOR_STSIG const &,
+      op_mul,
+      decltype(std::forward<RHSXP>(rhs))>
+      (*this, std::forward<RHSXP>(rhs));
+  }
+
+  template<typename RHSXP>
+  decltype(auto) operator/(RHSXP&& rhs)
+  {
+    return expression<
+      XNDARR_STATIC_VECTOR_STSIG const &,
+      op_div,
+      decltype(std::forward<RHSXP>(rhs))>
+      (*this, std::forward<RHSXP>(rhs));
+  }
+
 }; // class static_vector
 
 #include "static_vector.cpp"

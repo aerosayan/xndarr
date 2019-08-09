@@ -32,6 +32,7 @@ namespace xn{
 template<typename LHS, typename OP, typename RHS>
 class expression
 {
+  public:
   /// Left hand side of the expression
   LHS lhs_;
 
@@ -39,11 +40,57 @@ class expression
   RHS rhs_;
 
   public:
-  s32 x = -1;
   /// Constructor
-  expression(LHS&& ,RHS&&);
+  expression(LHS ,RHS);
+  /// Copy constructor
+  expression(XNDARR_EXPRESSION_STSIG &);
+  /// Move constructor
+  expression(XNDARR_EXPRESSION_STSIG &&);
+  /// Destructor
   ~expression(){}
 
+  //-///////////////////////////////////////////////////////////////////////-//
+  /// Overloading opeartors
+  //-///////////////////////////////////////////////////////////////////////-//
+  template<typename RHSXP>
+  decltype(auto) operator+(RHSXP&& rhs) const
+  {
+    return expression<
+      expression<LHS,OP,RHS> const&,
+      op_add,
+      decltype(std::forward<RHSXP>(rhs))>
+      (*this, std::forward<RHSXP>(rhs));
+  }
+
+  template<typename RHSXP>
+  decltype(auto) operator-(RHSXP&& rhs) const
+  {
+    return expression<
+      expression<LHS,OP,RHS> const&,
+      op_sub,
+      decltype(std::forward<RHSXP>(rhs))>
+      (*this, std::forward<RHSXP>(rhs));
+  }
+
+  template<typename RHSXP>
+  decltype(auto) operator*(RHSXP&& rhs) const
+  {
+    return expression<
+      expression<LHS,OP,RHS> const&,
+      op_mul,
+      decltype(std::forward<RHSXP>(rhs))>
+      (*this, std::forward<RHSXP>(rhs));
+  }
+
+  template<typename RHSXP>
+  decltype(auto) operator/(RHSXP&& rhs) const
+  {
+    return expression<
+      expression<LHS,OP,RHS> const&,
+      op_div,
+      decltype(std::forward<RHSXP>(rhs))>
+      (*this, std::forward<RHSXP>(rhs));
+  }
 }; // end class expression
 
 #include "vecexpr.cpp"

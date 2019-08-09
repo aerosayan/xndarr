@@ -7,6 +7,7 @@
 
 #include "include/xndarr.hpp"
 #include <iostream>
+#include <stdexcept>
 
 using namespace std;
 
@@ -14,12 +15,9 @@ using namespace std;
 int main()
 {
 
-  std::vector<int> x,y;
-  auto z = xn::expression<decltype((x)),xn::op_add,decltype((y))>(x,y);
-  cout << z.x << endl;
-  xn::static_vector<int,200> v;
-  cout << v.size_ << " " <<  v.type_ << endl;
-  cout << v.size() << endl;
+  xn::static_vector<int,500> w,x,y,z;
+  auto X = w + x*y - z ;
+  //cout << X << endl;
 
   return 0;
 }
