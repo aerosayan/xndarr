@@ -5,9 +5,9 @@
 // @date 8-AUG-2019
 //-//////////////////////////////////////////////////////////////////////////-//
 XNDARR_STATIC_VECTOR_LTSIG
-const szt
+constexpr szt
 XNDARR_STATIC_VECTOR_STSIG
   :: size()
 {
-  return size_;
+  return N;
 }

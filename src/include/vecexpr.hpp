@@ -32,7 +32,7 @@ namespace xn{
 template<typename LHS, typename OP, typename RHS>
 class expression
 {
-  public:
+  private:
   /// Left hand side of the expression
   LHS lhs_;
 
@@ -52,6 +52,11 @@ class expression
   //-///////////////////////////////////////////////////////////////////////-//
   /// Overloading opeartors
   //-///////////////////////////////////////////////////////////////////////-//
+  decltype(auto) operator[](szt i)
+  {
+    return OP::eval(lhs_[i], rhs_[i]);
+  }
+
   template<typename RHSXP>
   decltype(auto) operator+(RHSXP&& rhs) const
   {
