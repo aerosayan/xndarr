@@ -55,10 +55,10 @@ static void bm_vector_reserve_push_back(benchmark::State& s){
 
 #define N 18
 BENCHMARK(bm_create_vector);
-BENCHMARK(bm_vector_reserve)->Range(2,8<<N);
-BENCHMARK(bm_vector_resize)->Range(2,8<<N);
-BENCHMARK(bm_vector_push_back)->Range(2,8<<N);
-BENCHMARK(bm_vector_reserve_push_back)->Range(2,8<<N);
+BENCHMARK(bm_vector_reserve)->RangeMultiplier(2)->Range(2,8<<N);
+BENCHMARK(bm_vector_resize)->RangeMultiplier(2)->Range(2,8<<N);
+BENCHMARK(bm_vector_push_back)->RangeMultiplier(2)->Range(2,8<<N);
+BENCHMARK(bm_vector_reserve_push_back)->RangeMultiplier(2)->Range(2,8<<N);
 
 
 
