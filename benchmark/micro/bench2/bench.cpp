@@ -55,6 +55,7 @@ static void bm_simd_vector_add(benchmark::State& s)
 
 // Enable AVX2 if available
 #if defined (__AVX2__)
+//#error "AVX2 available"
     for(; i<(s.range(0) & ~0x7); i += 8){
       _mm256_storeu_ps(&v3[i],
           _mm256_add_ps(
@@ -68,6 +69,7 @@ static void bm_simd_vector_add(benchmark::State& s)
 
 // Enable SSE2 if available
 #if defined(__SSE2__)
+//#error "SSE2 available"
     for(; i<(s.range(0) & ~0x3); i += 4){
       _mm_storeu_ps(&v3[i],
         _mm_add_ps(
@@ -90,7 +92,7 @@ static void bm_simd_vector_add(benchmark::State& s)
 
 
 
-#define RANGE RangeMultiplier(2)->Range(2, 8<< 10)
+#define RANGE RangeMultiplier(2)->Range(2, 8<< 4)
 
 BENCHMARK(bm_vector_setup)->RANGE;
 BENCHMARK(bm_vector_add)->RANGE;
