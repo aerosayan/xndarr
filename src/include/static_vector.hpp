@@ -52,6 +52,8 @@ class static_vector{
   /// Data stored in the static vector
   std::vector<T> data_;
 
+  T data_type;
+
   public:
   static_vector(){
     data_.resize(N,0);
@@ -76,7 +78,16 @@ class static_vector{
   template<typename RHSXP>
   static_vector<T,N>& operator=(RHSXP&& rhs)
   {
-    for(szt i=0; i<N; ++i){
+    szt i = 0;
+
+    #if defined(XNSIMD_AVX3_AVAILABLE)
+    #error "AVX3 enabled?"
+    for( ; i<(N & ~7); i += 8){
+
+    }
+    #endif
+
+    for( ; i<N; ++i){
       data_[i] = rhs[i];
     }
 

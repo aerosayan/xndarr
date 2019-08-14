@@ -39,6 +39,7 @@ class expression
   /// Right hand side of the expression
   RHS rhs_;
 
+
   public:
   /// Constructor
   expression(LHS ,RHS);

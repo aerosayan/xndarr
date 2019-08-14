@@ -4,7 +4,7 @@
 // @author Sayan Bhattacharjee
 // @date 2-AUG-2019
 //-//////////////////////////////////////////////////////////////////////////-//
-
+#include "simd/simd.hpp"
 #include "scalar.hpp"
 #include "vecexpr.hpp"
 #include "ndarray.hpp"
