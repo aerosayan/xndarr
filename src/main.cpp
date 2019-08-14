@@ -26,17 +26,20 @@ struct apply<xn::op_add,float,256>
   }
 };
 
-int main()
-{
+int main() {
   // Initialize data
   xn::static_vector<float, 10> x({1,2,3,4,5,6,7,8,9,10}),
                                y({1,2,3,4,5,6,7,8,9,10}),
                                z;
 
-  _mm256_storeu_ps(&z.data_[0],
-      apply<xn::op_add,decltype(x.data_type),256>()(&x.data_[0],&y.data_[0]));
+  // Dispatch a call to the proper specilization of apply
+  __m256 data = apply<xn::op_add,decltype(x.data_type),256>()
+                                         (&x.data_[0],&y.data_[0]);
 
-  cout << "SIMD eval : ";
+  // Store the data (8 floats) into z
+  _mm256_storeu_ps(&z.data_[0], data);
+
+  cout << "SIMD eval of 8 floats: ";
   for(auto x : z.data_) cout << x << " "; cout << endl;
 
   return 0;
