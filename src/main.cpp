@@ -33,7 +33,7 @@ int main() {
                                z;
 
   // Dispatch a call to the proper specilization of apply
-  __m256 data = apply<xn::op_add,decltype(x.data_type),256>()
+  __m256 data = apply<xn::op_add,decltype(x.dtype),256>()
                                          (&x.data_[0],&y.data_[0]);
 
   // Store the data (8 floats) into z

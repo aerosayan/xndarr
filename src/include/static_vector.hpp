@@ -50,17 +50,20 @@ class static_vector{
   /// Storage format of the static vector (row or column)
   s32 type_ = VEC_TYPE::id_;
   /// Data stored in the static vector
-  std::vector<T> data_;
+  T data_[N];
 
-  T data_type;
+public:
+  /// Variable of data type T
+  //  This is used to identify the type of T at compile and runtime
+  T dtype;
 
   public:
-  static_vector(){
-    data_.resize(N,0);
-  }
+  static_vector() {}
 
-  static_vector(const std::initializer_list<T>& data) : data_(data){
-  }
+  static_vector(T);
+
+  static_vector(const std::initializer_list<T>& );
+
   ~static_vector(){}
 
   /// Get size

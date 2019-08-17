@@ -4,6 +4,23 @@
 // @author Sayan Bhattacharjee
 // @date 8-AUG-2019
 //-//////////////////////////////////////////////////////////////////////////-//
+
+XNDARR_STATIC_VECTOR_LTSIG
+XNDARR_STATIC_VECTOR_STSIG
+  :: static_vector(T data)
+{
+  std::fill(data_, data_ + N, data);
+}
+
+XNDARR_STATIC_VECTOR_LTSIG
+XNDARR_STATIC_VECTOR_STSIG
+  :: static_vector(const std::initializer_list<T>& data)
+{
+  szt i=0;
+  for(auto x: data)
+    data_[i++] = x;
+}
+
 XNDARR_STATIC_VECTOR_LTSIG
 constexpr szt
 XNDARR_STATIC_VECTOR_STSIG
