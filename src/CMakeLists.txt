@@ -3,10 +3,12 @@ project(xndarr)
 add_executable(xndarr main.cpp)
 
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+set(CMAKE_CXX_FLAGS "-O3 -Wall -Werror")
 
-target_compile_features(xndarr PUBLIC cxx_std_14)
+target_compile_options(xndarr PUBLIC "--std=c++17")
+target_compile_options(xndarr PUBLIC "-mavx2")
 
