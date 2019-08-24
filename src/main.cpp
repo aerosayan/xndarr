@@ -34,13 +34,13 @@ int main() {
 
   // Dispatch a call to the proper specilization of apply
   __m256 data = apply<xn::op_add,decltype(x.dtype),256>()
-                                         (&x.data_[0],&y.data_[0]);
+                                         (&x.data()[0],&y.data()[0]);
 
   // Store the data (8 floats) into z
-  _mm256_storeu_ps(&z.data_[0], data);
+  _mm256_storeu_ps(&z.data()[0], data);
 
   cout << "SIMD eval of 8 floats: ";
-  for(auto x : z.data_) cout << x << " "; cout << endl;
+  for(szt i=0; i<z.size(); ++i) cout << z.data()[i] << " "; cout << endl;
 
   return 0;
 }

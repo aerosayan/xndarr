@@ -20,8 +20,7 @@ struct row_vec{
 };
 
 /// Data regarding column vectors
-struct col_vec{
-  static const s32 id_ = 1<<1;
+struct col_vec{ static const s32 id_ = 1<<1;
 };
 
 
@@ -44,11 +43,11 @@ struct col_vec{
 //-//////////////////////////////////////////////////////////////////////////-//
 template<typename T, szt N, typename VEC_TYPE = row_vec>
 class static_vector{
-  public:
+private:
   /// Size of the static vector
-  const szt size_ = N;
+  static constexpr szt size_ = N;
   /// Storage format of the static vector (row or column)
-  s32 type_ = VEC_TYPE::id_;
+  static constexpr s32 type_ = VEC_TYPE::id_;
   /// Data stored in the static vector
   T data_[N];
 
@@ -57,7 +56,7 @@ public:
   //  This is used to identify the type of T at compile and runtime
   T dtype;
 
-  public:
+public:
   static_vector() {}
 
   static_vector(T);
@@ -67,7 +66,11 @@ public:
   ~static_vector(){}
 
   /// Get size
-  constexpr szt size();
+  constexpr szt size() { return size_;}
+  /// Get type
+  constexpr s32 type() { return type_;}
+  /// Get data
+  T* data() {return data_;}
 
 
   //-///////////////////////////////////////////////////////////////////////-//
