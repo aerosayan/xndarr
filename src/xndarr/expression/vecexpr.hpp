@@ -9,7 +9,7 @@
 #define __XNDARR_VECEXPR_HPP__
 
 #include <utility>
-#include "common.hpp"
+#include "../common.hpp"
 #include "operations.hpp"
 
 namespace xn{

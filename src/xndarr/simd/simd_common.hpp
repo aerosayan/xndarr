@@ -1,5 +1,5 @@
 //-//////////////////////////////////////////////////////////////////////////-//
-// @file common.hpp
+// @file simd_common.hpp
 // @info Common SIMD vectorization definitions and operations
 // @author Sayan Bhattacharjee
 // @date 14-AUG-2019

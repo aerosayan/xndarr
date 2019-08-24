@@ -9,7 +9,7 @@
 #define   __XNDARR_STATIC_VECTOR_HPP__
 #include <array>
 #include <iostream>
-#include "common.hpp"
+#include "../common.hpp"
 
 namespace xn {
 

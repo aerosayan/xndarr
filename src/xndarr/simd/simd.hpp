@@ -8,6 +8,6 @@
 #ifndef __XNDARR_SIMD_HPP__
 #define __XNDARR_SIMD_HPP__
 
-#include "common.hpp"
+#include "simd_common.hpp"
 
 #endif // __XNDARR_SIMD_HPP__

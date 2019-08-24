@@ -5,7 +5,7 @@
 // @date 2-AUG-2019
 //-//////////////////////////////////////////////////////////////////////////-//
 
-#include "include/xndarr.hpp"
+#include "xndarr/xndarr.hpp"
 #include <immintrin.h>
 #include <iostream>
 #include <stdexcept>
