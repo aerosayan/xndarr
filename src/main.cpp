@@ -40,7 +40,9 @@ int main() {
   _mm256_storeu_ps(&z.data()[0], data);
 
   cout << "SIMD eval of 8 floats: ";
-  for(szt i=0; i<z.size(); ++i) cout << z.data()[i] << " "; cout << endl;
+  for(szt i=0; i<z.size(); ++i)
+    cout << z.data()[i] << " ";
+  cout << endl;
 
   return 0;
 }
