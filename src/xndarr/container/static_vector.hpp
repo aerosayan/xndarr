@@ -10,6 +10,7 @@
 #include <array>
 #include <iostream>
 #include "../common.hpp"
+#include "../simd/simd.hpp"
 
 namespace xn {
 
@@ -76,9 +77,19 @@ public:
   //-///////////////////////////////////////////////////////////////////////-//
   /// Overloading opeartors
   //-///////////////////////////////////////////////////////////////////////-//
-  T operator[](szt i) const
+  T operator()(szt i) const
   {
     return data_[i];
+  }
+
+  template<typename SIMD_ISET>
+  T* operator()(const SIMD_ISET& iset, szt i) const
+  {
+  }
+
+  const T* operator()(const xn::AVX2& iset, szt i) const
+  {
+    return data_ + i;
   }
 
   template<typename RHSXP>
@@ -86,15 +97,16 @@ public:
   {
     szt i = 0;
 
-    #if defined(XNSIMD_AVX3_AVAILABLE)
-    #error "AVX3 enabled?"
+    // Use AVX2 SIMD vectorization
+    #if defined(XNSIMD_AVX2_AVAILABLE)
     for( ; i<(N & ~7); i += 8){
-
+      _mm256_store_ps(&data_[i], rhs.simd_eval(xn::AVX2(),i));
     }
     #endif
 
+    // Use serial code
     for( ; i<N; ++i){
-      data_[i] = rhs[i];
+      data_[i] = rhs(i);
     }
 
     return *this;
