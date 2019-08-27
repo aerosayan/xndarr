@@ -20,8 +20,20 @@ namespace xn {
 struct op_add
 {
   template<typename T>
-  T static eval(const T& lhs, const T& rhs){
+  T static apply(const T& lhs, const T& rhs)
+  {
     return lhs + rhs;
+  }
+
+  template<typename T, typename SIMD_ISET>
+  decltype(auto) static apply(const SIMD_ISET& iset, const T& lhs, const T& rhs)
+  {
+  }
+
+  template<typename T>
+  decltype(auto) static apply(const xn::AVX2& iset, const T& lhs, const T& rhs)
+  {
+    return _mm256_add_ps(_mm256_loadu_ps(lhs), _mm256_loadu_ps(rhs));
   }
 };
 
@@ -29,7 +41,8 @@ struct op_add
 struct op_sub
 {
   template<typename T>
-  T static eval(const T& lhs, const T& rhs){
+  T static apply(const T& lhs, const T& rhs)
+  {
     return lhs - rhs;
   }
 };
@@ -39,7 +52,8 @@ struct op_sub
 struct op_div
 {
   template<typename T>
-  T static eval(const T& lhs, const T& rhs){
+  T static apply(const T& lhs, const T& rhs)
+  {
     return lhs / rhs;
   }
 };
@@ -49,7 +63,8 @@ struct op_div
 struct op_mul
 {
   template<typename T>
-  T static eval(const T& lhs, const T& rhs){
+  T static apply(const T& lhs, const T& rhs)
+  {
     return lhs * rhs;
   }
 };
@@ -58,7 +73,8 @@ struct op_mul
 struct op_mod
 {
   template<typename T>
-  T static eval(const T& lhs, const T& rhs){
+  T static apply(const T& lhs, const T& rhs)
+  {
     return lhs % rhs;
   }
 };

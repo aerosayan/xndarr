@@ -11,6 +11,7 @@
 #include <utility>
 #include "../common.hpp"
 #include "operations.hpp"
+#include <iostream>
 
 namespace xn{
 
@@ -53,9 +54,29 @@ class expression
   //-///////////////////////////////////////////////////////////////////////-//
   /// Overloading opeartors
   //-///////////////////////////////////////////////////////////////////////-//
-  decltype(auto) operator[](szt i)
+  decltype(auto) operator()(szt i)
   {
-    return OP::eval(lhs_[i], rhs_[i]);
+    return OP::apply(lhs_(i), rhs_(i));
+  }
+
+  template<typename SIMD_ISET>
+  decltype(auto) operator()(const SIMD_ISET& iset, szt i)
+  {
+  }
+
+  decltype(auto) operator()(const xn::AVX2& iset, szt i)
+  {
+    return OP::apply(iset, lhs_(i), rhs_(i));
+  }
+
+  template<typename SIMD_ISET>
+  decltype(auto) simd_eval(const SIMD_ISET& iset, szt i)
+  {
+  }
+
+  decltype(auto) simd_eval(const xn::AVX2& iset, szt i)
+  {
+    return OP::apply(iset, lhs_(iset,i), rhs_(iset,i));
   }
 
   template<typename RHSXP>
