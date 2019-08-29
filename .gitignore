@@ -6,3 +6,7 @@ perf.*
 *.dat
 a.out
 r
+
+
+# Qt Creator pollutants
+src/CMakeLists.txt.user
